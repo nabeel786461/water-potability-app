@@ -34,7 +34,7 @@ st.markdown("""
             border: none;
             border-radius: 12px;
             padding: 12px 0;
-            font-size: 18px;
+            font-size: 8px;
             font-weight: bold;
             display: block;
             margin: auto;
