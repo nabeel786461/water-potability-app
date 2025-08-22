@@ -82,10 +82,12 @@ def load_model():
 
 model = load_model()
 
-# -------------------------------
-# User Inputs
-# -------------------------------
-st.markdown("<h2>🔹 Enter Water Quality Parameters</h2>", unsafe_allow_html=True)
+st.markdown("""
+    <h3 style="text-align:left; color:#0066cc; font-family:Arial, sans-serif; margin-bottom:10px;">
+        🔹 Enter Water Quality Parameters
+    </h3>
+""", unsafe_allow_html=True)
+
 
 col1, col2, col3 = st.columns(3)
 
