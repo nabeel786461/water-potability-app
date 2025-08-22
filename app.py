@@ -89,41 +89,22 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 
-# -------------------------------
-# Two Column Layout
-# -------------------------------
-left_col, right_col = st.columns([2,1])   # left column wider (2x), right smaller (1x)
+col1, col2, col3 = st.columns(3)
 
-with left_col:
-    st.markdown("""
-        <h3 style="text-align:left; color:#0066cc; font-family:Arial, sans-serif; margin-bottom:10px;">
-            🔹 Enter Water Quality Parameters
-        </h3>
-    """, unsafe_allow_html=True)
+with col1:
+    ph = st.slider("pH Value (0 - 14)", 0.0, 14.0, 7.0)
+    hardness = st.slider("Hardness (0 - 400)", 0.0, 400.0, 150.0)
+    solids = st.slider("Solids (0 - 50000)", 0.0, 50000.0, 20000.0)
 
-    with st.form("input_form"):
-        ph = st.number_input("pH Value (0 - 14)", min_value=0.0, max_value=14.0, value=7.0)
-        hardness = st.number_input("Hardness", min_value=0.0, value=150.0)
-        solids = st.number_input("Solids", min_value=0.0, value=20000.0)
-        chloramines = st.number_input("Chloramines", min_value=0.0, value=7.0)
-        sulfate = st.number_input("Sulfate", min_value=0.0, value=333.0)
-        conductivity = st.number_input("Conductivity", min_value=0.0, value=400.0)
-        organic_carbon = st.number_input("Organic Carbon", min_value=0.0, value=10.0)
-        trihalomethanes = st.number_input("Trihalomethanes", min_value=0.0, value=66.0)
-        turbidity = st.number_input("Turbidity", min_value=0.0, value=4.0)
-        
-        submitted = st.form_submit_button("🔮 Predict Potability")
+with col2:
+    chloramines = st.slider("Chloramines (0 - 15)", 0.0, 15.0, 7.0)
+    sulfate = st.slider("Sulfate (0 - 500)", 0.0, 500.0, 333.0)
+    conductivity = st.slider("Conductivity (0 - 2000)", 0.0, 2000.0, 400.0)
 
-with right_col:
-    st.markdown("""
-    <div class="card" style="max-width:400px; text-align:left; float:right;">
-        <h3>👨‍💻 Created by <b>Nabeel Arshad</b></h3>
-        ⚡ Model Accuracy: 69.05% <br>
-        🧠 Algorithm: Random Forest <br>
-        🌳 Balancing: SMOTE
-    </div>
-    """, unsafe_allow_html=True)
-
+with col3:
+    organic_carbon = st.slider("Organic Carbon (0 - 50)", 0.0, 50.0, 10.0)
+    trihalomethanes = st.slider("Trihalomethanes (0 - 150)", 0.0, 150.0, 66.0)
+    turbidity = st.slider("Turbidity (0 - 10)", 0.0, 10.0, 4.0)
 
 # -------------------------------
 # Prediction
