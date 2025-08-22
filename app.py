@@ -28,7 +28,7 @@ st.markdown("""
             margin: 15px 0;
         }
         .stButton>button {
-            width: 70%;
+            width: 90%;
             background: linear-gradient(90deg, #0066ff, #00c6ff);
             color: white;
             border: none;
@@ -89,6 +89,9 @@ with col2:
     hardness = st.slider("Hardness (0 - 400)", 0.0, 400.0, 150.0)
     solids = st.slider("Solids (0 - 50000)", 0.0, 50000.0, 20000.0)
 
+    # Prediction Button inside col2 (below sliders)
+    predict_btn = st.button("🔮 Predict Potability")
+
 with col3:
     chloramines = st.slider("Chloramines (0 - 15)", 0.0, 15.0, 7.0)
     sulfate = st.slider("Sulfate (0 - 500)", 0.0, 500.0, 333.0)
@@ -100,19 +103,7 @@ with col4:
     turbidity = st.slider("Turbidity (0 - 10)", 0.0, 10.0, 4.0)
 
 # -------------------------------
-# Prediction Button (Only under parameters)
-# -------------------------------
-col2_, col3_, col4_ = st.columns([1, 1, 1.2])  # same proportion as parameters
-
-with col2_:
-    pass  # empty for spacing
-with col3_:
-    predict_btn = st.button("🔮 Predict Potability")  # center below parameters
-with col4_:
-    pass  # empty for spacing
-
-# -------------------------------
-# Prediction Result
+# Prediction Result in col3+col4
 # -------------------------------
 if predict_btn:
     input_data = pd.DataFrame([[ph, hardness, solids, chloramines, sulfate, conductivity,
@@ -122,15 +113,16 @@ if predict_btn:
     
     prediction = model.predict(input_data)[0]
 
-    if prediction == 1:
-        st.markdown(
-            '<div class="card" style="background:#c6f6d5;text-align:center;">'
-            '<h2>✅ Water is Potable (Safe to Drink)</h2></div>', 
-            unsafe_allow_html=True
-        )
-    else:
-        st.markdown(
-            '<div class="card" style="background:#fed7d7;text-align:center;">'
-            '<h2>⚠️ Water is Not Potable (Unsafe)</h2></div>', 
-            unsafe_allow_html=True
-        )
+    with col3, col4:  # Result bar span across col3 & col4
+        if prediction == 1:
+            st.markdown(
+                '<div class="card" style="background:#c6f6d5;text-align:center;">'
+                '<h2>✅ Water is Potable (Safe to Drink)</h2></div>', 
+                unsafe_allow_html=True
+            )
+        else:
+            st.markdown(
+                '<div class="card" style="background:#fed7d7;text-align:center;">'
+                '<h2>⚠️ Water is Not Potable (Unsafe)</h2></div>', 
+                unsafe_allow_html=True
+            )
