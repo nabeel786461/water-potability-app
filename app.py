@@ -22,12 +22,9 @@ st.info(f"📊 Model Accuracy: **{MODEL_ACCURACY*100:.2f}%**")
 @st.cache_resource
 def load_model():
     model = joblib.load("rf_water_model_compressed.pkl")   # Model file must be in repo
-    return data["model"], data["accuracy"]
+    return model
 
-model, accuracy = load_model()
-
-# Show accuracy in UI
-st.info(f"📊 Model Accuracy: **{accuracy*100:.2f}%**")
+model = load_model()
 
 # -------------------------------
 # User Input Form
