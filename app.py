@@ -28,7 +28,7 @@ st.markdown("""
             margin: 15px 0;
         }
         .stButton>button {
-            width: 60%;
+            width: 70%;
             background: linear-gradient(90deg, #0066ff, #00c6ff);
             color: white;
             border: none;
@@ -100,10 +100,21 @@ with col4:
     turbidity = st.slider("Turbidity (0 - 10)", 0.0, 10.0, 4.0)
 
 # -------------------------------
-# Prediction
+# Prediction Button (Only under parameters)
 # -------------------------------
-st.write("")  # spacing
-if st.button("🔮 Predict Potability"):
+col2_, col3_, col4_ = st.columns([1, 1, 1.2])  # same proportion as parameters
+
+with col2_:
+    pass  # empty for spacing
+with col3_:
+    predict_btn = st.button("🔮 Predict Potability")  # center below parameters
+with col4_:
+    pass  # empty for spacing
+
+# -------------------------------
+# Prediction Result
+# -------------------------------
+if predict_btn:
     input_data = pd.DataFrame([[ph, hardness, solids, chloramines, sulfate, conductivity,
                                 organic_carbon, trihalomethanes, turbidity]],
                                 columns=["ph", "Hardness", "Solids", "Chloramines", "Sulfate", 
