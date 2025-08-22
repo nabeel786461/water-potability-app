@@ -86,12 +86,13 @@ col1, col2, col3, col4 = st.columns([1, 1, 1, 1.2])
 # Info Card in Column 1
 with col1:
     st.markdown("""
-        <div class="card" style="max-width:400px; text-align:left;">
-        <h3>👨‍💻 Created by <b>Nabeel Arshad</b></h3>
-        ⚡ Model Accuracy: 69.05% <br>
-        🧠 Algorithm: Random Forest <br>
-        🌳 Balancing: SMOTE
-    </div>
+        <div class="card" style="max-width:600px; margin: 0 auto; text-align:left;">
+    <h3>👨‍💻 Created by <b>Nabeel Arshad</b></h3>
+    ⚡ Model Accuracy: 69.05% <br>
+    🧠 Algorithm: Random Forest <br>
+    🌳 Balancing: SMOTE
+</div>
+
     """, unsafe_allow_html=True)
 
 # Parameters in other 3 columns
