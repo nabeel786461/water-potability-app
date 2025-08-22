@@ -81,7 +81,7 @@ model = load_model()
 # -------------------------------
 # Layout: 4 Columns
 # -------------------------------
-col1, col2, col3, col4 = st.columns([1, 1, 1, 1.2])
+col1, spacer1, col2, spacer2, col3, spacer3, col4 = st.columns([1, 0.3, 1, 0.3, 1, 0.3, 1.2])
 
 # Info Card in Column 1
 with col1:
