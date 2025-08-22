@@ -113,16 +113,29 @@ if predict_btn:
     
     prediction = model.predict(input_data)[0]
 
-    with col3, col4:  # Result bar span across col3 & col4
+    with col3, col4:  # Result bar across col3 & col4
         if prediction == 1:
             st.markdown(
-                '<div class="card" style="background:#c6f6d5;text-align:center;">'
-                '<h2>✅ Water is Potable (Safe to Drink)</h2></div>', 
+                """
+                <div style="background:#e0f2ff; padding:12px; 
+                            border-radius:10px; text-align:center; 
+                            font-size:16px; font-weight:600;
+                            border:1px solid #99d1ff;">
+                    ✅ Water is Potable (Safe to Drink)
+                </div>
+                """,
                 unsafe_allow_html=True
             )
         else:
             st.markdown(
-                '<div class="card" style="background:#fed7d7;text-align:center;">'
-                '<h2>⚠️ Water is Not Potable (Unsafe)</h2></div>', 
+                """
+                <div style="background:#ffe0e0; padding:12px; 
+                            border-radius:10px; text-align:center; 
+                            font-size:16px; font-weight:600;
+                            border:1px solid #ff9999;">
+                    ⚠️ Water is Not Potable (Unsafe)
+                </div>
+                """,
                 unsafe_allow_html=True
             )
+
