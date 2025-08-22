@@ -13,7 +13,7 @@ st.set_page_config(page_title="Water Potability Predictor 💧", page_icon="💧
 st.markdown("""
     <style>
         .main {
-            background: linear-gradient(135deg, #6dd5ed, #2193b0);
+            background: #ffffff;
             color: #000000;
         }
         h1, h2, h3 {
@@ -21,15 +21,15 @@ st.markdown("""
             font-family: 'Arial Black', sans-serif;
         }
         .card {
-            background-color: #ffffff;
+            background-color: #f9f9f9;
             padding: 20px;
             border-radius: 15px;
-            box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
+            box-shadow: 0px 4px 15px rgba(0,0,0,0.1);
             margin: 15px 0;
         }
         .stButton>button {
             width: 50%;
-            background: linear-gradient(90deg, #ff512f, #dd2476);
+            background: linear-gradient(90deg, #0066ff, #00c6ff);
             color: white;
             border: none;
             border-radius: 12px;
@@ -40,7 +40,7 @@ st.markdown("""
             margin: auto;
         }
         .stButton>button:hover {
-            background: linear-gradient(90deg, #dd2476, #ff512f);
+            background: linear-gradient(90deg, #00c6ff, #0066ff);
         }
     </style>
 """, unsafe_allow_html=True)
