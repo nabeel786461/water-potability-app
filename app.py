@@ -55,7 +55,7 @@ st.markdown("<h3>Check if your water is safe to drink!</h3>", unsafe_allow_html=
 # Info Card
 # -------------------------------
 st.markdown("""
-<div class="card" style="text-align:center; max-width:500px; margin:auto;">
+<div class="card" style="text-align:right; max-width:500px; margin:auto;">
     <h3>👨‍💻 Created by <b>Nabeel Arshad</b></h3>
     ⚡ Model Accuracy: 69.05% <br>
     🧠 Algorithm: Random Forest <br>
