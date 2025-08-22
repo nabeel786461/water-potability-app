@@ -17,6 +17,7 @@ st.markdown("""
             color: #000000;
         }
         h1, h2, h3 {
+            text-align: center;
             font-family: 'Arial Black', sans-serif;
         }
         .card {
@@ -33,30 +34,13 @@ st.markdown("""
             border: none;
             border-radius: 12px;
             padding: 12px 0;
-            font-size: 14px;
+            font-size: 8px;
             font-weight: bold;
             display: block;
             margin: auto;
         }
         .stButton>button:hover {
             background: linear-gradient(90deg, #00c6ff, #0066ff);
-        }
-        /* Right align info card */
-        .info-box {
-            max-width: 350px;
-            float: right;
-            text-align: left;
-        }
-        /* Align columns properly */
-        div[data-testid="column"] > div {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            height: 100%;
-        }
-        /* Slider color blue */
-        div.stSlider > div[data-baseweb="slider"] > div {
-            background: #0066ff !important;
         }
     </style>
 """, unsafe_allow_html=True)
@@ -77,7 +61,7 @@ st.markdown("""
 # Info Card
 # -------------------------------
 st.markdown("""
-<div class="card info-box">
+<div class="card" style="max-width:500px; float:left; text-align:left;">
     <h3>👨‍💻 Created by <b>Nabeel Arshad</b></h3>
     ⚡ Model Accuracy: 69.05% <br>
     🧠 Algorithm: Random Forest <br>
@@ -99,7 +83,7 @@ model = load_model()
 # Water Quality Parameters Heading
 # -------------------------------
 st.markdown("""
-    <h3 style="text-align:left; color:#0066cc; font-family:Arial, sans-serif; margin-bottom:10px; margin-top:70px;">
+    <h3 style="text-align:left; color:#0066cc; font-family:Arial, sans-serif; margin-bottom:10px;">
         🔹 Enter Water Quality Parameters
     </h3>
 """, unsafe_allow_html=True)
@@ -129,3 +113,21 @@ with col3:
 # -------------------------------
 if st.button("🔮 Predict Potability"):
     input_data = pd.DataFrame([[ph, hardness, solids, chloramines, sulfate, conductivity,
+                                organic_carbon, trihalomethanes, turbidity]],
+                                columns=["ph", "Hardness", "Solids", "Chloramines", "Sulfate", 
+                                         "Conductivity", "Organic_carbon", "Trihalomethanes", "Turbidity"])
+    
+    prediction = model.predict(input_data)[0]
+
+    if prediction == 1:
+        st.markdown(
+            '<div class="card" style="background:#c6f6d5;text-align:center;">'
+            '<h2>✅ Water is Potable (Safe to Drink)</h2></div>', 
+            unsafe_allow_html=True
+        )
+    else:
+        st.markdown(
+            '<div class="card" style="background:#fed7d7;text-align:center;">'
+            '<h2>⚠️ Water is Not Potable (Unsafe)</h2></div>', 
+            unsafe_allow_html=True
+        )
