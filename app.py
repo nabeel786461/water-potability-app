@@ -21,12 +21,18 @@ st.markdown("""
             font-family: 'Arial Black', sans-serif;
         }
         .card {
-            background-color: #f9f9f9;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0px 4px 15px rgba(0,0,0,0.1);
-            margin: 15px 0;
-        }
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 6px 20px rgba(0,0,0,0.15); /* 👈 Shadow added/stronger */
+    margin: 15px 0;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.card:hover {
+    transform: translateY(-5px); /* 👈 Hover par thoda upar uth jaye */
+    box-shadow: 0px 10px 25px rgba(0,0,0,0.25);
+}
+
         .stButton>button {
             width: 90%;
             background: linear-gradient(90deg, #0066ff, #00c6ff);
