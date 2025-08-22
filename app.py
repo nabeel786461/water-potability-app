@@ -46,10 +46,17 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # -------------------------------
-# Title
+# Title & Description
 # -------------------------------
-st.markdown("<h1>💧 Water Potability Prediction App</h1>", unsafe_allow_html=True)
-st.markdown("<h3>Check if your water is safe to drink!</h3>", unsafe_allow_html=True)
+st.markdown("""
+    <h2 style="text-align:left; color:#0066cc; font-family:Arial, sans-serif; margin-bottom:0;">
+        💧 Water Potability Prediction App
+    </h2>
+    <p style="text-align:left; color:#333333; font-size:16px; margin-top:4px;">
+        Check if your water is <b>safe to drink!</b>
+    </p>
+""", unsafe_allow_html=True)
+
 
 # -------------------------------
 # Info Card
