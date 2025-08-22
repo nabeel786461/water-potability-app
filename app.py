@@ -28,13 +28,13 @@ st.markdown("""
             margin: 15px 0;
         }
         .stButton>button {
-            width: 50%;
+            width: 60%;
             background: linear-gradient(90deg, #0066ff, #00c6ff);
             color: white;
             border: none;
             border-radius: 12px;
             padding: 12px 0;
-            font-size: 8px;
+            font-size: 12px;
             font-weight: bold;
             display: block;
             margin: auto;
@@ -58,18 +58,6 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # -------------------------------
-# Info Card
-# -------------------------------
-st.markdown("""
-<div class="card" style="max-width:500px; float:left; text-align:left;">
-    <h3>👨‍💻 Created by <b>Nabeel Arshad</b></h3>
-    ⚡ Model Accuracy: 69.05% <br>
-    🧠 Algorithm: Random Forest <br>
-    🌳 Balancing: SMOTE
-</div>
-""", unsafe_allow_html=True)
-
-# -------------------------------
 # Load Model
 # -------------------------------
 @st.cache_resource
@@ -80,30 +68,33 @@ def load_model():
 model = load_model()
 
 # -------------------------------
-# Water Quality Parameters Heading
+# Layout: 4 Columns
 # -------------------------------
-st.markdown("""
-    <h3 style="text-align:left; color:#0066cc; font-family:Arial, sans-serif; margin-bottom:10px;">
-        🔹 Enter Water Quality Parameters
-    </h3>
-""", unsafe_allow_html=True)
+col1, col2, col3, col4 = st.columns([1, 1, 1, 1.2])
 
-# -------------------------------
-# 3 Column Layout for Parameters
-# -------------------------------
-col1, col2, col3 = st.columns(3)
-
+# Info Card in Column 1
 with col1:
+    st.markdown("""
+    <div class="card" style="text-align:left;">
+        <h3>👨‍💻 Created by <b>Nabeel Arshad</b></h3>
+        ⚡ Model Accuracy: 69.05% <br>
+        🧠 Algorithm: Random Forest <br>
+        🌳 Balancing: SMOTE
+    </div>
+    """, unsafe_allow_html=True)
+
+# Parameters in other 3 columns
+with col2:
     ph = st.slider("pH Value (0 - 14)", 0.0, 14.0, 7.0)
     hardness = st.slider("Hardness (0 - 400)", 0.0, 400.0, 150.0)
     solids = st.slider("Solids (0 - 50000)", 0.0, 50000.0, 20000.0)
 
-with col2:
+with col3:
     chloramines = st.slider("Chloramines (0 - 15)", 0.0, 15.0, 7.0)
     sulfate = st.slider("Sulfate (0 - 500)", 0.0, 500.0, 333.0)
     conductivity = st.slider("Conductivity (0 - 2000)", 0.0, 2000.0, 400.0)
 
-with col3:
+with col4:
     organic_carbon = st.slider("Organic Carbon (0 - 50)", 0.0, 50.0, 10.0)
     trihalomethanes = st.slider("Trihalomethanes (0 - 150)", 0.0, 150.0, 66.0)
     turbidity = st.slider("Turbidity (0 - 10)", 0.0, 10.0, 4.0)
@@ -111,6 +102,7 @@ with col3:
 # -------------------------------
 # Prediction
 # -------------------------------
+st.write("")  # spacing
 if st.button("🔮 Predict Potability"):
     input_data = pd.DataFrame([[ph, hardness, solids, chloramines, sulfate, conductivity,
                                 organic_carbon, trihalomethanes, turbidity]],
