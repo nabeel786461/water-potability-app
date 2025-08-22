@@ -28,14 +28,16 @@ st.markdown("""
             margin: 15px 0;
         }
         .stButton>button {
-            width: 100%;
+            width: 90%;
             background: linear-gradient(90deg, #0066ff, #00c6ff);
             color: white;
             border: none;
             border-radius: 12px;
-            padding: 10px 0;
-            font-size: 14px;
+            padding: 12px 0;
+            font-size: 12px;
             font-weight: bold;
+            display: block;
+            margin: auto;
         }
         .stButton>button:hover {
             background: linear-gradient(90deg, #00c6ff, #0066ff);
@@ -56,22 +58,6 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # -------------------------------
-# Layout with 4 Columns
-# -------------------------------
-col1, col2, col3, col4 = st.columns([1, 1.5, 1.5, 1.5])
-
-# Info Card in col1
-with col1:
-    st.markdown("""
-    <div class="card" style="max-width:400px; text-align:left;">
-        <h3>👨‍💻 Created by <b>Nabeel Arshad</b></h3>
-        ⚡ Model Accuracy: 69.05% <br>
-        🧠 Algorithm: Random Forest <br>
-        🌳 Balancing: SMOTE
-    </div>
-    """, unsafe_allow_html=True)
-
-# -------------------------------
 # Load Model
 # -------------------------------
 @st.cache_resource
@@ -82,21 +68,28 @@ def load_model():
 model = load_model()
 
 # -------------------------------
-# Parameters Heading
+# Layout: 4 Columns
 # -------------------------------
-st.markdown("""
-    <h3 style="text-align:left; color:#0066cc; font-family:Arial, sans-serif; margin-bottom:10px;">
-        🔹 Enter Water Quality Parameters
-    </h3>
-""", unsafe_allow_html=True)
+col1, col2, col3, col4 = st.columns([1, 1, 1, 1.2])
 
-# Parameters inside col2, col3, col4
+# Info Card in Column 1
+with col1:
+    st.markdown("""
+    <div class="card" style="text-align:left;">
+        <h3>👨‍💻 Created by <b>Nabeel Arshad</b></h3>
+        ⚡ Model Accuracy: 69.05% <br>
+        🧠 Algorithm: Random Forest <br>
+        🌳 Balancing: SMOTE
+    </div>
+    """, unsafe_allow_html=True)
+
+# Parameters in other 3 columns
 with col2:
     ph = st.slider("pH Value (0 - 14)", 0.0, 14.0, 7.0)
     hardness = st.slider("Hardness (0 - 400)", 0.0, 400.0, 150.0)
     solids = st.slider("Solids (0 - 50000)", 0.0, 50000.0, 20000.0)
 
-    # Prediction Button here only
+    # Prediction Button inside col2 (below sliders)
     predict_btn = st.button("🔮 Predict Potability")
 
 with col3:
@@ -110,7 +103,7 @@ with col4:
     turbidity = st.slider("Turbidity (0 - 10)", 0.0, 10.0, 4.0)
 
 # -------------------------------
-# Prediction Result (col3+col4)
+# Prediction Result in col3+col4
 # -------------------------------
 if predict_btn:
     input_data = pd.DataFrame([[ph, hardness, solids, chloramines, sulfate, conductivity,
@@ -120,28 +113,16 @@ if predict_btn:
     
     prediction = model.predict(input_data)[0]
 
-    with col3, col4:
+    with col3, col4:  # Result bar span across col3 & col4
         if prediction == 1:
             st.markdown(
-                """
-                <div style="background:#e0f2ff; padding:12px; 
-                            border-radius:10px; text-align:center; 
-                            font-size:16px; font-weight:600;
-                            border:1px solid #99d1ff;">
-                    ✅ Water is Potable (Safe to Drink)
-                </div>
-                """,
+                '<div class="card" style="background:#c6f6d5;text-align:center;">'
+                '<h2>✅ Water is Potable (Safe to Drink)</h2></div>', 
                 unsafe_allow_html=True
             )
         else:
             st.markdown(
-                """
-                <div style="background:#ffe0e0; padding:12px; 
-                            border-radius:10px; text-align:center; 
-                            font-size:16px; font-weight:600;
-                            border:1px solid #ff9999;">
-                    ⚠️ Water is Not Potable (Unsafe)
-                </div>
-                """,
+                '<div class="card" style="background:#fed7d7;text-align:center;">'
+                '<h2>⚠️ Water is Not Potable (Unsafe)</h2></div>', 
                 unsafe_allow_html=True
             )
