@@ -82,7 +82,7 @@ col1, col2, col3, col4 = st.columns([1, 1, 1, 1.2])
 with col1:
     st.markdown("""
         <div class="card" style="max-width:400px; text-align:left;">
-        <h3>👨‍💻 Created by <b>Nabeel Arshad</b></h3>
+        <h4>👨‍💻 Created by <b>Nabeel Arshad</b></h4>
         ⚡ Model Accuracy: 69.05% <br>
         🧠 Algorithm: Random Forest <br>
         🌳 Balancing: SMOTE
