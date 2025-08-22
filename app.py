@@ -113,7 +113,7 @@ if predict_btn:
     
     prediction = model.predict(input_data)[0]
 
-    with col3, col4:  # Result bar across col3 & col4
+    with col3:  # Result bar across col3 & col4
         if prediction == 1:
             st.markdown(
                 """
