@@ -87,7 +87,7 @@ col1, col2, col3, col4 = st.columns([1, 1, 1, 1.2])
 with col1:
     st.markdown("""
        <div style="display: flex; justify-content: center; margin-top: 20px; margin-bottom: 20px;">
-            <div class="card" style="width:420px; text-align:left;">
+            <div class="card" style="width:360px; text-align:left; margin:auto;">
                 <h3>👨‍💻 Created by <b>Nabeel Arshad</b></h3>
                 ⚡ Model Accuracy: 69.05% <br>
                 🧠 Algorithm: Random Forest <br>
@@ -96,29 +96,30 @@ with col1:
        </div>
     """, unsafe_allow_html=True)
 
-# Parameters in other 3 columns
+# Parameters in other 3 columns (with spacing)
 with col2:
     ph = st.slider("pH Value (0 - 14)", 0.0, 14.0, 7.0)
-    st.markdown("<br>", unsafe_allow_html=True)
+    st.markdown("<div style='margin-bottom:10px;'></div>", unsafe_allow_html=True)
     hardness = st.slider("Hardness (0 - 400)", 0.0, 400.0, 150.0)
-    st.markdown("<br>", unsafe_allow_html=True)
+    st.markdown("<div style='margin-bottom:10px;'></div>", unsafe_allow_html=True)
     solids = st.slider("Solids (0 - 50000)", 0.0, 50000.0, 20000.0)
 
     predict_btn = st.button("🔮 Predict Potability")
 
 with col3:
     chloramines = st.slider("Chloramines (0 - 15)", 0.0, 15.0, 7.0)
-    st.markdown("<br>", unsafe_allow_html=True)
+    st.markdown("<div style='margin-bottom:10px;'></div>", unsafe_allow_html=True)
     sulfate = st.slider("Sulfate (0 - 500)", 0.0, 500.0, 333.0)
-    st.markdown("<br>", unsafe_allow_html=True)
+    st.markdown("<div style='margin-bottom:10px;'></div>", unsafe_allow_html=True)
     conductivity = st.slider("Conductivity (0 - 2000)", 0.0, 2000.0, 400.0)
 
 with col4:
     organic_carbon = st.slider("Organic Carbon (0 - 50)", 0.0, 50.0, 10.0)
-    st.markdown("<br>", unsafe_allow_html=True)
+    st.markdown("<div style='margin-bottom:10px;'></div>", unsafe_allow_html=True)
     trihalomethanes = st.slider("Trihalomethanes (0 - 150)", 0.0, 150.0, 66.0)
-    st.markdown("<br>", unsafe_allow_html=True)
+    st.markdown("<div style='margin-bottom:10px;'></div>", unsafe_allow_html=True)
     turbidity = st.slider("Turbidity (0 - 10)", 0.0, 10.0, 4.0)
+
 
 
 # -------------------------------
