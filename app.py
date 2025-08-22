@@ -9,6 +9,13 @@ st.set_page_config(page_title="Water Potability Predictor 💧", page_icon="💧
 st.title("💧 Water Potability Prediction App")
 st.markdown("Enter the water quality parameters below and check whether the water is **Potable (Safe to Drink)** or **Not Potable (Unsafe)**.")
 
+
+
+MODEL_ACCURACY = 0.82   # <- apna actual accuracy score daal do
+st.info(f"📊 Model Accuracy: **{MODEL_ACCURACY*100:.2f}%**")
+
+
+
 # -------------------------------
 # Load the trained model
 # -------------------------------
