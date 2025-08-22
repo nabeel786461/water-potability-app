@@ -51,6 +51,7 @@ st.markdown("""
             background: linear-gradient(90deg, #00c6ff, #0066ff);
             transform: scale(1.05);   /* 👈 thoda zoom effect */
             box-shadow: 0px 8px 18px rgba(0, 102, 255, 0.5);  /* 👈 stronger shadow */
+            color: black;
         }
     </style>
 """, unsafe_allow_html=True)
