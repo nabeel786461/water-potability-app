@@ -11,8 +11,9 @@ st.markdown("Enter the water quality parameters below and check whether the wate
 
 
 
-MODEL_ACCURACY = 0.69   # <- apna actual accuracy score daal do
+MODEL_ACCURACY = 0.6905   # Actual accuracy value
 st.info(f"📊 Model Accuracy: **{MODEL_ACCURACY*100:.2f}%**")
+
 
 
 
