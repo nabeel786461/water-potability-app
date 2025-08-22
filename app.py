@@ -44,9 +44,13 @@ st.markdown("""
             font-weight: bold;
             display: block;
             margin: auto;
+            box-shadow: 0px 4px 10px rgba(0, 102, 255, 0.3);   /* 👈 shadow added */
+            transition: all 0.3s ease-in-out;                  /* 👈 smooth animation */
         }
         .stButton>button:hover {
             background: linear-gradient(90deg, #00c6ff, #0066ff);
+            transform: scale(1.05);   /* 👈 thoda zoom effect */
+            box-shadow: 0px 8px 18px rgba(0, 102, 255, 0.5);  /* 👈 stronger shadow */
         }
     </style>
 """, unsafe_allow_html=True)
