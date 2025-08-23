@@ -88,7 +88,7 @@ with col1:
     st.markdown("""
        <div style="display: flex; justify-content: center; margin-top: 20px; margin-bottom: 20px;">
             <div class="card" style="width:360px; text-align:left; margin:auto;">
-                <h3>👨‍💻 Created by <b>Danyal Shafqat</b></h3>
+                <h3>👨‍💻 Created by <b>Nabeel Arshad</b></h3>
                 ⚡ Model Accuracy: 69.05% <br>
                 🧠 Algorithm: Random Forest <br>
                 🌳 Balancing: SMOTE
